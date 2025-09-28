@@ -1,7 +1,17 @@
-
-
 export default function TodoInput(props) {
     const { handleAddTodo, todoValue, setTodoValue } = props
+
+    addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+        if (todoValue !== '') {
+            handleAddTodo(todoValue)
+            setTodoValue('')
+        } else {
+            return
+        }
+    }
+    });
 
     return (
         <header>
@@ -10,11 +20,15 @@ export default function TodoInput(props) {
                 onChange={ (e) => {
                     setTodoValue(e.target.value)
                 }}
-                placeholder="Enter todo..."
+                placeholder="Enter task..."
             />
             <button onClick = { () => {
-                handleAddTodo(todoValue)
-                setTodoValue('')
+                if (todoValue !== '') {
+                    handleAddTodo(todoValue)
+                    setTodoValue('')
+                } else {
+                    return
+                }
             } }>Add</button>
         </header>
     )

@@ -1,5 +1,5 @@
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Space Mono', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -19,7 +19,7 @@ button {
   display: flex;
   flex-direction: column;
   padding: 14px;
-  background: #eff6ff;
+  background: radial-gradient(circle,rgba(70, 86, 161, 1) 0%, rgba(196, 79, 103, 1) 100%);
   gap: 14px;
 }
 
@@ -43,15 +43,31 @@ header input {
   width: 100%;
 }
 
+@keyframes buttonAnimation {
+  0%   {transform: translateX(2px);
+        transform: translateY(2px);
+        box-shadow: none;}
+  50% {box-shadow: 2px 2px;}
+}
+
 header button {
   border-radius: 14px;
   background: transparent;
   transition-duration: 200ms;
   cursor: pointer;
+  box-shadow: 3px 3px black;
 }
 
 header button:hover {
-  opacity: 0.7;
+  transform: translateX(1px);
+  transform: translateY(1px);
+  box-shadow: 2px 2px;
+}
+
+header button:focus {
+  animation-name: buttonAnimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 }
 
 header button,
@@ -72,6 +88,27 @@ p {
   gap: 14px;
 }
 
+.todoHeader {
+  font-size: 2.5em;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  text-shadow: 1px 1px 2px pink;
+  font-family: 'Press Start 2P', system-ui;
+}
+
+.todoHeader:hover {
+  text-shadow: 2px 2px 2px pink;
+  cursor: default;
+}
+
+ .line{
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid black;
+}
+
 .todoItem {
   display: flex;
   align-items: center;
@@ -79,6 +116,29 @@ p {
   padding: 14px;
   border-radius: 14px;
   background: white;
+  box-shadow: 2px 2px black;
+}
+
+@keyframes strike{
+  0%   { width : 0; }
+  100% { width: 100%; }
+}
+.strike {
+  position: relative;
+}
+.strike::after {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: black;
+  animation-name: strike;
+  animation-duration: 4s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .todoItem p {
