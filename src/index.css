@@ -119,6 +119,10 @@ p {
   box-shadow: 2px 2px black;
 }
 
+.todoItem:hover {
+  box-shadow: 3px 3px black;
+}
+
 @keyframes strike{
   0%   { width : 0; }
   100% { width: 100%; }

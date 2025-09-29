@@ -36,7 +36,7 @@ export default function TodoList(props) {
                 {done.map(({ todo, index }) => (
                 <TodoCard
                     {...props}
-                    key={todo.id ?? `todo-${index}`}
+                    key={todo.id ?? `todo${index}`}
                     index={index}
                 >
                     <p className='strike' >{todo.text}</p>
